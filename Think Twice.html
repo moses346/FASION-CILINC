@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Think Twice Retailers - Fashion for the Conscious</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e67e22;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --danger: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background: #d35400;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: var(--secondary);
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: #777;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover, 
+        nav ul li a.active {
+            color: var(--secondary);
+        }
+        
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-icon {
+            margin-left: 20px;
+            font-size: 1.2rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-icon:hover {
+            color: var(--secondary);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 0;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        /* Featured Products */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Categories Section */
+        .categories {
+            background: var(--light);
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .category-card {
+            position: relative;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .category-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .category-card:hover .category-img {
+            transform: scale(1.1);
+        }
+        
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 20px;
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        /* Testimonials */
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: none;
+        }
+        
+        .testimonial.active {
+            display: block;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        
+        .testimonial-dot.active {
+            background: var(--secondary);
+        }
+        
+        /* Contact Form */
+        .contact {
+            background: var(--light);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Newsletter */
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .newsletter-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .nav-icons {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 25px;
+                right: 20px;
+                font-size: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .mobile-hidden {
+                display: none;
+            }
+        }
+
+        /* Page-specific styles */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* Products Page */
+        .filter-sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .filter-group {
+            margin-bottom: 20px;
+        }
+        
+        .filter-group h4 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .filter-options {
+            list-style: none;
+        }
+        
+        .filter-options li {
+            margin-bottom: 8px;
+        }
+        
+        .filter-options label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .filter-options input {
+            margin-right: 10px;
+        }
+        
+        /* About Page */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Think <span>Twice</span></a>
+            
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav class="mobile-hidden">
+                <ul>
+                    <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#products" class="nav-link" data-page="products">Products</a></li>
+                    <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-icons mobile-hidden">
+                <div class="nav-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="nav-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="nav-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>Fashion With Consciousness</h1>
+                <p>Discover our curated collection of sustainable and stylish clothing for the modern individual.</p>
+                <a href="#products" class="btn nav-link" data-page="products">Shop Now</a>
+                <a href="#about" class="btn btn-outline nav-link" data-page="about">Learn More</a>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section id="products">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Featured Products</h2>
+                    <p>Discover our most popular and trending items this season</p>
+                </div>
+                
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Organic Cotton T-Shirt" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Organic Cotton T-Shirt</h3>
+                            <p class="product-price">shs. 10,000/=</p>
+                            <a href="#products" class="btn nav-link" data-page="products">Add to Cart</a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1550614000-4895a10e1bfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80" alt="Denim Jacket" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Eco-Friendly Summer Dress</h3>
+                            <p class="product-price">shs. 25,000/=</p>
+                            <a href="#products" class="btn nav-link" data-page="products">Add to Cart</a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1736&q=80" alt="Summer Dress" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Sustainable Denim Jacket</h3>
+                            <p class="product-price">shs. 30,000/=</p>
+                            <a href="#products" class="btn nav-link" data-page="products">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section - Only on Home Page -->
+        <section id="categories" class="categories">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Shop By Category</h2>
+                    <p>Find the perfect style for every occasion</p>
+                </div>
+                
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <img src="image/men.jpg" alt="Men's Fashion" class="category-img">
+                        <div class="category-overlay">
+                            <h3 class="category-title">Men</h3>
+                            <p>Modern & Sustainable</p>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Women's Fashion" class="category-img">
+                        <div class="category-overlay">
+                            <h3 class="category-title">Women</h3>
+                            <p>Elegant & Conscious</p>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card">
+                        <img src="image/acc.jpg" alt="Accessories" class="category-img">
+                        <div class="category-overlay">
+                            <h3 class="category-title">Accessories</h3>
+                            <p>Complete Your Look</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials">
+            <div class="container">
+                <div class="section-title">
+                    <h2>What Our Customers Say</h2>
+                    <p>Don't just take our word for it - hear from our satisfied customers</p>
+                </div>
+                
+                <div class="testimonials-container">
+                    <div class="testimonial active">
+                        <p class="testimonial-text">"The quality of the clothes from Think Twice is exceptional. I love that I can look good while also supporting sustainable fashion!"</p>
+                        <p class="testimonial-author">- Sarah Johnson</p>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p class="testimonial-text">"Their customer service is outstanding. They helped me find the perfect outfit for a special occasion and even followed up to make sure I was happy."</p>
+                        <p class="testimonial-author">- Michael Thompson</p>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p class="testimonial-text">"I've been shopping with Think Twice for over a year now, and I'm consistently impressed with their ethical practices and stylish collections."</p>
+                        <p class="testimonial-author">- Emily Rodriguez</p>
+                    </div>
+                    
+                    <div class="testimonial-nav">
+                        <div class="testimonial-dot active"></div>
+                        <div class="testimonial-dot"></div>
+                        <div class="testimonial-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Products Page -->
+    <div id="products-page" class="page">
+        <section class="hero" style="padding: 100px 0; background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');">
+            <div class="container hero-content">
+                <h1>Our Products</h1>
+                <p>Browse our complete collection of sustainable fashion</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="filter-sidebar">
+                    <h3>Filter Products</h3>
+                    <div class="filter-group">
+                        <h4>Category</h4>
+                        <ul class="filter-options">
+                            <li><label><input type="checkbox" name="category" value="men"> Men's Clothing</label></li>
+                            <li><label><input type="checkbox" name="category" value="women"> Women's Clothing</label></li>
+                            <li><label><input type="checkbox" name="category" value="accessories"> Accessories</label></li>
+                        </ul>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <ul class="filter-options">
+                            <li><label><input type="checkbox" name="price" value="0-10000"> Under shs. 10,000</label></li>
+                            <li><label><input type="checkbox" name="price" value="10000-20000"> shs. 10,000 - 20,000</label></li>
+                            <li><label><input type="checkbox" name="price" value="20000+"> Over shs. 20,000</label></li>
+                        </ul>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Size</h4>
+                        <ul class="filter-options">
+                            <li><label><input type="checkbox" name="size" value="s"> Small</label></li>
+                            <li><label><input type="checkbox" name="size" value="m"> Medium</label></li>
+                            <li><label><input type="checkbox" name="size" value="l"> Large</label></li>
+                            <li><label><input type="checkbox" name="size" value="xl"> X-Large</label></li>
+                        </ul>
+                    </div>
+                    <button class="btn" style="width: 100%;">Apply Filters</button>
+                </div>
+
+                <div class="products-grid">
+                    <!-- Product cards would be repeated here for all products -->
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Organic Cotton T-Shirt" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Organic Cotton T-Shirt</h3>
+                            <p class="product-price">shs. 10,000/=</p>
+                            <a href="#" class="btn">Add to Cart</a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1550614000-4895a10e1bfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80" alt="Denim Jacket" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Eco-Friendly Summer Dress</h3>
+                            <p class="product-price">shs. 25,000/=</p>
+                            <a href="#" class="btn">Add to Cart</a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1736&q=80" alt="Summer Dress" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Sustainable Denim Jacket</h3>
+                            <p class="product-price">shs. 30,000/=</p>
+                            <a href="#" class="btn">Add to Cart</a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <img src="image/linen.webp" alt="Linen Pants" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Comfortable Linen Pants</h3>
+                            <p class="product-price">shs. 25,000/=</p>
+                            <a href="#" class="btn">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="image/sweater.jpg" alt="Organic Sweater" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Organic Wool Sweater</h3>
+                            <p class="product-price">shs. 35,000/=</p>
+                            <a href="#" class="btn">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="image/jeans.jpg" alt="Eco Jeans" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Sustainable Denim Jeans</h3>
+                            <p class="product-price">shs. 40,000/=</p>
+                            <a href="#" class="btn">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="image/socks.jpg" alt="Bamboo Socks" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Bamboo Fiber Socks (3-pack)</h3>
+                            <p class="product-price">shs. 15,000/=</p>
+                            <a href="#" class="btn">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1735&q=80" alt="Recycled Bag" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Recycled Material Tote Bag</h3>
+                            <p class="product-price">shs. 20,000/=</p>
+                            <a href="#" class="btn">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about-page" class="page">
+        <section class="hero" style="padding: 100px 0; background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');">
+            <div class="container hero-content">
+                <h1>Our Story</h1>
+                <p>Learn about our mission, values, and the people behind Think Twice</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Why We Do What We Do</h2>
+                </div>
+                
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <p style="font-size: 1.1rem; margin-bottom: 30px; text-align: center;">
+                        Think Twice Retailers was founded in 2015 with a simple mission: to provide stylish, high-quality clothing that doesn't compromise on ethical values. We believe that fashion should be sustainable, fair, and accessible to everyone.
+                    </p>
+                    <p style="font-size: 1.1rem; margin-bottom: 30px; text-align: center;">
+                        All our products are made from eco-friendly materials, and we ensure fair wages and safe working conditions for everyone in our supply chain. When you shop with us, you're not just buying clothes - you're making a positive impact.
+                    </p>
+                </div>
+
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Sustainability</h3>
+                        <p>We use eco-friendly materials and processes to minimize our environmental impact throughout our supply chain.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Ethical Production</h3>
+                        <p>All our partners maintain fair wages and safe working conditions for their employees.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3>Quality Craftsmanship</h3>
+                        <p>We focus on creating durable, timeless pieces that last longer and reduce fashion waste.</p>
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <h2>Meet Our Team</h2>
+                </div>
+
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="image/ritah.jpg" alt="Head Designer" class="team-img">
+                        <h3>Tushabe Ritah</h3>
+                        <p>Founder & CEO</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="image/ritah.jpg" alt="Head Designer" class="team-img">
+                        <h3>Tushabe Ritah</h3>
+                        <p>Head Designer</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="image/ritah.jpg" alt="Head Designer" class="team-img">
+                        <h3>Tushabe Ritah</h3>
+                        <p>Sustainability Officer</p>
+                    </div>
+
+                    <div class="team-member">
+                        <img src="image/ritah.jpg" alt="Head Designer" class="team-img">
+                        <h3>Tushabe Ritah</h3>
+                        <p>Finace Officer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page">
+        <section class="hero" style="padding: 100px 0; background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80');">
+            <div class="container hero-content">
+                <h1>Get In Touch</h1>
+                <p>We'd love to hear from you - reach out with questions or feedback</p>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contact Us</h2>
+                    <p>Have questions? We'd love to hear from you</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
+                    <div>
+                        <h3>Send us a message</h3>
+                        <form id="contactForm" style="margin-top: 30px;">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="First Name e.g Tushabe" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Last Name e.g Ritah" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email Address e.g tushabe@gmail.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Phone Number e.g 0791419411">
+                            </div>
+                            
+                            <div class="form-group">
+                                <select class="form-control" required>
+                                    <option value="" disabled selected>What can we help you with?</option>
+                                    <option>Product Inquiry</option>
+                                    <option>Order Support</option>
+                                    <option>Returns & Exchanges</option>
+                                    <option>Feedback</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <textarea class="form-control" placeholder="Your Message" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div>
+                        <h3>Visit Our Store</h3>
+                        <div style="background: white; padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); margin-top: 30px;">
+                            <div style="margin-bottom: 25px;">
+                                <h4><i class="fas fa-map-marker-alt" style="color: var(--secondary); margin-right: 10px;"></i> Address</h4>
+                                <p>123 Fashion Street, Kampala, Uganda</p>
+                            </div>
+                            
+                            <div style="margin-bottom: 25px;">
+                                <h4><i class="fas fa-phone" style="color: var(--secondary); margin-right: 10px;"></i> Phone</h4>
+                                <p>+256 760 254 918</p>
+                            </div>
+                            
+                            <div style="margin-bottom: 25px;">
+                                <h4><i class="fas fa-envelope" style="color: var(--secondary); margin-right: 10px;"></i> Email</h4>
+                                <p>info@thinktwice.com</p>
+                            </div>
+                            
+                            <div>
+                                <h4><i class="fas fa-clock" style="color: var(--secondary); margin-right: 10px;"></i> Opening Hours</h4>
+                                <p>Monday-Friday: 9am - 8pm</p>
+                                <p>Saturday: 10am - 6pm</p>
+                                <p>Sunday: 11am - 4pm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Think Twice</h3>
+                    <p>Sustainable fashion for the conscious consumer. Quality clothing that cares about people and the planet.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Shop</h3>
+                    <ul class="footer-links">
+                        <li><a href="#products" class="nav-link" data-page="products">Men's Collection</a></li>
+                        <li><a href="#products" class="nav-link" data-page="products">Women's Collection</a></li>
+                        <li><a href="#products" class="nav-link" data-page="products">Accessories</a></li>
+                        <li><a href="#products" class="nav-link" data-page="products">New Arrivals</a></li>
+                        <li><a href="#products" class="nav-link" data-page="products">Sale</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about" class="nav-link" data-page="about">About Us</a></li>
+                        <li><a href="#about" class="nav-link" data-page="about">Sustainability</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#contact" class="nav-link" data-page="contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for special offers and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Your email address">
+                        <button type="submit" class="newsletter-btn"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Think Twice Retailers. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            function showPage(pageId) {
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                document.getElementById(`${pageId}-page`).classList.add('active');
+                
+                // Update URL hash
+                window.location.hash = pageId;
+            }
+            
+            // Set up navigation
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+            
+            // Check URL hash on load
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(`${hash}-page`)) {
+                showPage(hash);
+            } else {
+                showPage('home');
+            }
+            
+            // Testimonial Carousel
+            const testimonials = document.querySelectorAll('.testimonial');
+            const dots = document.querySelectorAll('.testimonial-dot');
+            let currentIndex = 0;
+            
+            function showTestimonial(index) {
+                testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                testimonials[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentIndex = index;
+            }
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showTestimonial(index);
+                });
+            });
+            
+            // Auto-rotate testimonials
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % testimonials.length;
+                showTestimonial(currentIndex);
+            }, 5000);
+            
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! We will get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+            
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.querySelector('nav');
+            
+            hamburger.addEventListener('click', function() {
+                mobileMenu.classList.toggle('mobile-hidden');
+            });
+        });
+    </script>
+</body>
+</html>
